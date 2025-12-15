@@ -41,12 +41,12 @@ const filteredProducts = computed(() => {
 </script>
 
 <template>
-  <div class="container flex pt-40 pb-20 gap-20">
-    <div class="space-y-10 sticky top-60 h-fit  z-0">
+  <div class="container flex flex-col lg:flex-row pt-32 lg:pt-40 pb-16 lg:pb-20 gap-8 lg:gap-20 px-4 lg:px-0">
+    <div class="space-y-8 lg:space-y-10 lg:sticky lg:top-60 h-fit z-0 lg:w-80">
       <!-- Browse by -->
       <div class="space-y-4">
-        <h2 class="text-xl font-semibold lowercase">Browse by</h2>
-        <div class="border-b border-gray-400 w-36" />
+        <h2 class="text-lg lg:text-xl font-semibold lowercase">Browse by</h2>
+        <div class="border-b border-gray-400 w-32 lg:w-36" />
 
         <ul>
           <li
@@ -56,7 +56,7 @@ const filteredProducts = computed(() => {
             class="py-3 cursor-pointer transition-all duration-200"
             :class="
               activeId === item.id
-                ? 'text-black  underline underline-offset-4'
+                ? 'text-black underline underline-offset-4'
                 : 'text-gray-600 hover:text-black hover:underline hover:underline-offset-4'
             "
           >
@@ -67,8 +67,8 @@ const filteredProducts = computed(() => {
 
       <!-- Filter by Price -->
       <div class="space-y-4">
-        <h2 class="text-xl font-semibold lowercase">Filter by</h2>
-        <div class="border-b border-gray-400 w-36" />
+        <h2 class="text-lg lg:text-xl font-semibold lowercase">Filter by</h2>
+        <div class="border-b border-gray-400 w-32 lg:w-36" />
 
         <div
           class="flex items-center justify-between mt-4 cursor-pointer select-none"
@@ -108,11 +108,11 @@ const filteredProducts = computed(() => {
             </div>
           </div>
         </Transition>
-        <div class="border-b border-gray-400 w-36" />
+        <div class="border-b border-gray-400 w-32 lg:w-36" />
       </div>
     </div>
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
       <div
         v-for="item in filteredProducts"
         :key="item.id"

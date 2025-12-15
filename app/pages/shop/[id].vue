@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseNavigationShop from "~/components/common/BaseNavigationShop.vue";
+import BaseNavigation from "~/components/common/BaseNavigation.vue";
 import Footer from "~/components/common/Footer.vue";
 import { bestSellers, products } from "~~/lib";
 import { useCart } from "~/composables/useCart";
@@ -59,21 +59,31 @@ const shippingInfoOpen = ref(false);
   <div class="bg-[#F2F0EB]">
     <div class="container relative">
       <div class="sticky top-20 z-10">
-        <BaseNavigationShop />
+        <BaseNavigation />
       </div>
-      <div class="pt-40 pb-20 flex items-center gap-5">
-        <div class="w-full flex items-center justify-center rounded-2xl">
+      <div
+        class="pt-24 md:pt-40 pb-16 md:pb-20 flex flex-col lg:flex-row items-center gap-8 lg:gap-5 px-4 lg:px-0"
+      >
+        <div
+          class="w-full lg:w-1/2 flex items-center justify-center rounded-2xl"
+        >
           <img
             :src="product.image"
             :alt="product.name"
-            class="h-[700px] object-contain rounded-2xl"
+            class="h-80 md:h-[500px] lg:h-[700px] w-full object-contain rounded-2xl"
           />
         </div>
 
-        <div class="w-full space-y-6 flex flex-col justify-start">
-          <h1 class="font-semibold text-[28px]">{{ product.name }}</h1>
-          <p class="font-extralight text-xl">${{ product.price }}</p>
-          <h2 class="font-extralight">{{ product.description }}</h2>
+        <div
+          class="w-full lg:w-1/2 space-y-4 md:space-y-6 flex flex-col justify-start"
+        >
+          <h1 class="font-semibold text-xl md:text-[28px]">
+            {{ product.name }}
+          </h1>
+          <p class="font-extralight text-lg md:text-xl">${{ product.price }}</p>
+          <h2 class="font-extralight text-sm md:text-base">
+            {{ product.description }}
+          </h2>
           <div class="flex items-start">
             <div
               class="flex items-center border border-dark bg-light/20 rounded-lg"
@@ -97,22 +107,24 @@ const shippingInfoOpen = ref(false);
             </div>
           </div>
 
-          <div class="flex items-center gap-4 mt-6 w-full">
+          <div
+            class="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 mt-6 w-full"
+          >
             <button
               @click="handleAddToCart"
-              class="border py-2 w-full border-dark rounded-md hover:bg-transparent bg-secondary font-extralight transition-colors"
+              class="border py-3 sm:py-2 w-full border-dark rounded-md hover:bg-transparent bg-secondary font-extralight transition-colors text-sm sm:text-base"
             >
               add to cart
             </button>
             <button
-              class="hover:bg-secondary font-extralight border py-2 w-full border-dark rounded-md transition-colors"
+              class="hover:bg-secondary font-extralight border py-3 sm:py-2 w-full border-dark rounded-md transition-colors text-sm sm:text-base"
             >
               buy now
             </button>
             <button
               @click="handleToggleFavorite"
               :class="[
-                'border py-2 w-1/4 border-dark rounded-md transition-colors',
+                'border py-3 sm:py-2 px-4 sm:w-1/4 sm:px-0 border-dark rounded-md transition-colors flex items-center justify-center',
                 isInWishlist(product.id)
                   ? 'bg-red-500 text-white hover:bg-red-600'
                   : 'hover:bg-orange-600',
@@ -135,7 +147,7 @@ const shippingInfoOpen = ref(false);
                 class="flex items-center justify-between cursor-pointer"
                 @click="productInfoOpen = !productInfoOpen"
               >
-                <h2 class="font-light font-merriweather text-[26px]">
+                <h2 class="font-light font-merriweather text-lg md:text-[26px]">
                   product info
                 </h2>
                 <Icon
@@ -205,7 +217,7 @@ const shippingInfoOpen = ref(false);
                 class="flex items-center justify-between cursor-pointer"
                 @click="refundPolicyOpen = !refundPolicyOpen"
               >
-                <h2 class="font-light font-merriweather text-[26px]">
+                <h2 class="font-light font-merriweather text-lg md:text-[26px]">
                   return and refund policy
                 </h2>
                 <Icon
@@ -243,7 +255,7 @@ const shippingInfoOpen = ref(false);
                 class="flex items-center justify-between cursor-pointer"
                 @click="shippingInfoOpen = !shippingInfoOpen"
               >
-                <h2 class="font-light font-merriweather text-[26px]">
+                <h2 class="font-light font-merriweather text-lg md:text-[26px]">
                   shipping info
                 </h2>
                 <Icon
@@ -276,22 +288,24 @@ const shippingInfoOpen = ref(false);
           </div>
 
           <div
-            class="items-start flex justify-start place-items-end pt-20 gap-5"
+            class="items-start flex justify-start place-items-end pt-12 md:pt-20 gap-4 md:gap-5"
           >
-            <Icon name="uil:twitter" class="w-6 h-6" />
-            <Icon name="uil:instagram" class="w-6 h-6" />
-            <Icon name="uil:facebook" class="w-6 h-6" />
-            <Icon name="uil:pinterest" class="w-6 h-6" />
+            <Icon name="uil:twitter" class="w-5 h-5 md:w-6 md:h-6" />
+            <Icon name="uil:instagram" class="w-5 h-5 md:w-6 md:h-6" />
+            <Icon name="uil:facebook" class="w-5 h-5 md:w-6 md:h-6" />
+            <Icon name="uil:pinterest" class="w-5 h-5 md:w-6 md:h-6" />
           </div>
         </div>
       </div>
     </div>
-    <div class="container mt-10 px-10">
+    <div class="container mt-8 md:mt-10 px-4 md:px-0">
       <div class="flex justify-between lowercase">
-        <h1 class="text-[32px] font-semibold">Best sellers</h1>
+        <h1 class="text-2xl md:text-[32px] font-semibold">Best sellers</h1>
       </div>
 
-      <div class="grid grid-cols-4 items-center gap-4 mt-6">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-center gap-4 mt-6"
+      >
         <div
           v-for="best in bestSellers"
           :key="best.id"

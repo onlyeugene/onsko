@@ -1,20 +1,20 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="w-full bg-white pt-10">
+  <div class="w-full bg-white pt-8 md:pt-10">
     <div class="container arrival-bg rounded-t-2xl bg-cover">
       <div
-        class="flex flex-col items-start justify-end pt-[25rem] pb-10 max-w-[1440px] mx-auto leading-[70px] text-dark"
+        class="flex flex-col items-start justify-end pt-24 md:pt-[25rem] pb-8 md:pb-10 max-w-[1440px] mx-auto px-4 md:px-0 leading-tight md:leading-[70px] text-dark"
       >
-        <h1 class="text-[42px] font-semibold font-poppins">
-          effortless beauty, <br />
+        <h1 class="text-2xl md:text-[42px] font-semibold font-poppins mb-2 md:mb-0">
+          effortless beauty, <br class="hidden md:block" />
           timeless charm.
         </h1>
-        <p class="text-[42px] font-merriweather italic font-light">
+        <p class="text-xl md:text-[42px] font-merriweather italic font-light mb-4 md:mb-0">
           new arrivals now in stock
         </p>
         <button
-          class="text-xl border-dark font-semibold border py-2 px-16 lowercase rounded-xl hover:bg-secondary"
+          class="text-base md:text-xl border-dark font-semibold border py-2 px-8 md:px-16 lowercase rounded-xl hover:bg-secondary transition-colors duration-300"
         >
           Shop Now
         </button>
@@ -22,7 +22,7 @@
     </div>
     <div class="overflow-hidden container bg-secondary">
       <div
-        class="flex items-center gap-4 text-dark text-[30px] font-bold lowercase slider-track "
+        class="flex items-center gap-2 md:gap-4 text-dark text-lg md:text-[30px] font-bold lowercase slider-track py-3 md:py-4"
       >
         <!-- First set of items -->
         <div class="flex items-center whitespace-nowrap">

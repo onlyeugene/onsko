@@ -12,9 +12,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 const containerClass = computed(() => {
   if (props.align === "start") {
-    return "container flex items-start justify-start px-10";
+    return "container flex items-start justify-start px-4 md:px-10 py-4 md:py-8";
   }
-  return "container flex items-end justify-end";
+  return "container flex items-end justify-end px-4 md:px-0 py-4 md:py-8";
 });
 
 const imageRef = ref<HTMLImageElement | null>(null);
@@ -66,7 +66,7 @@ onUnmounted(() => {
       :src="image"
       :alt="alt"
       :style="imageStyle"
-      class="transition-transform duration-100 ease-out"
+      class="transition-transform duration-100 ease-out "
     />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseNavigationShop from "~/components/common/BaseNavigationShop.vue";
+import BaseNavigation from "~/components/common/BaseNavigation.vue";
 import Footer from "~/components/common/Footer.vue";
 import Account from "~/components/Profile/Account.vue";
 import Address from "~/components/Profile/Address.vue";
@@ -34,7 +34,7 @@ onMounted(() => {
   <div class="bg-[#F9F9F9] min-h-screen">
     <div class="relative">
       <div class="sticky top-20 z-20">
-        <BaseNavigationShop />
+        <BaseNavigation />
       </div>
 
       <div class="container">

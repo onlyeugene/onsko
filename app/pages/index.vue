@@ -14,7 +14,7 @@ import { cream, facemask } from "~~/lib";
 <template>
   <div>
     <div class="relative">
-      <div class="sticky top-20 z-50 w-full">
+      <div class="sticky top-20 z-50 w-full px-5">
         <BaseNavigation />
       </div>
       <HomeHero />
@@ -33,11 +33,11 @@ import { cream, facemask } from "~~/lib";
         <div class="relative z-30">
           <!-- Additional content can go here -->
 
-          <div class="sticky top-10 z-10 flex items-center overflow-hidden">
+          <div class="sticky top-10 z-10 flex items-center overflow-hidden container">
             <!-- Story Component Placeholder -->
             <Story />
           </div>
-          <div class="h-[100vh] z-20 relative mt-[500px]">
+          <div class="h-[100vh] z-20 relative mt-[500px] md:block hidden">
             <div
               class="sticky top-40 z-10 flex items-center bounce overflow-hidden"
             >
