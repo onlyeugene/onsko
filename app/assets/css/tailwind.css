@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-poppins;
+    navigation: smooth;
+    
+  }
+}
+
+.home-bg {
+  background-image: url("../images/store.avif");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.arrival-bg {
+  background-image: url("../images/banner.avif");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+* {
+  cursor: url("../images/banner.avif") 20 20, auto;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
