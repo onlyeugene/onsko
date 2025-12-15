@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { useCart } from '~/composables/useCart'
+import { useWishlist } from '~/composables/useWishlist'
+import CartDropdown from '~/components/common/CartDropdown.vue'
+
 const route = useRoute();
+const { cartCount } = useCart()
+const { wishlistCount } = useWishlist()
 
 const paths = [
   { name: "Home", href: "/" },
@@ -51,14 +57,15 @@ const paths = [
       <!-- User Actions -->
       <div class="flex items-center gap-6 text-sm text-white space-x-4">
         <div class="flex items-center gap-6">
-          <div class="flex items-center gap-1">
+          <NuxtLink to="/profile" class="flex items-center gap-1">
             <Icon name="uil:user" class="cursor-pointer" />
             <p class="cursor-pointer">User</p>
-          </div>
-          <div class="flex items-center gap-1">
+          </NuxtLink>
+          <NuxtLink to="/profile?tab=my%20wishlist" class="flex items-center gap-1">
             <Icon name="uil:heart" class="cursor-pointer" />
-            <span class="cursor-pointer">0</span>
-          </div>
+            <span class="cursor-pointer">{{ wishlistCount }}</span>
+          </NuxtLink>
+          <CartDropdown />
         </div>
 
         <div class="flex items-center gap-1 relative cursor-pointer">

@@ -2,6 +2,8 @@
 import BaseNavigationShop from "~/components/common/BaseNavigationShop.vue";
 import Footer from "~/components/common/Footer.vue";
 import { bestSellers, products } from "~~/lib";
+import { useCart } from "~/composables/useCart";
+import { useWishlist } from "~/composables/useWishlist";
 
 const route = useRoute();
 const router = useRouter();
@@ -17,6 +19,10 @@ if (!product) {
   });
 }
 
+// Composables
+const { addToCart } = useCart();
+const { toggleWishlist, isInWishlist } = useWishlist();
+
 // Quantity state
 const quantity = ref(1);
 
@@ -29,6 +35,18 @@ const decreaseQuantity = () => {
   if (quantity.value > 1) {
     quantity.value--;
   }
+};
+
+// Add to cart handler
+const handleAddToCart = () => {
+  addToCart(product.id, quantity.value);
+  // Optional: Show success message or toast
+  console.log(`Added ${quantity.value} ${product.name}(s) to cart`);
+};
+
+// Favorite handler
+const handleToggleFavorite = () => {
+  toggleWishlist(product.id);
 };
 
 // Accordion states
@@ -81,19 +99,32 @@ const shippingInfoOpen = ref(false);
 
           <div class="flex items-center gap-4 mt-6 w-full">
             <button
-              class="border py-2 w-full border-dark rounded-md hover:bg-transparent bg-secondary font-extralight"
+              @click="handleAddToCart"
+              class="border py-2 w-full border-dark rounded-md hover:bg-transparent bg-secondary font-extralight transition-colors"
             >
               add to cart
             </button>
             <button
-              class="hover:bg-secondary font-extralight border py-2 w-full border-dark rounded-md"
+              class="hover:bg-secondary font-extralight border py-2 w-full border-dark rounded-md transition-colors"
             >
               buy now
             </button>
             <button
-              class="border hover:bg-orange-600 py-2 w-1/4 border-dark rounded-md"
+              @click="handleToggleFavorite"
+              :class="[
+                'border py-2 w-1/4 border-dark rounded-md transition-colors',
+                isInWishlist(product.id)
+                  ? 'bg-red-500 text-white hover:bg-red-600'
+                  : 'hover:bg-orange-600',
+              ]"
             >
-              <Icon name="uil:heart" class="w-4 h-4 font-light" />
+              <Icon
+                name="uil:heart"
+                :class="[
+                  'w-4 h-4 font-light',
+                  isInWishlist(product.id) ? 'text-white' : '',
+                ]"
+              />
             </button>
           </div>
 

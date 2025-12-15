@@ -7,6 +7,8 @@ import Order from "~/components/Profile/Order.vue";
 import Wallet from "~/components/Profile/Wallet.vue";
 import Wishlist from "~/components/Profile/Wishlist.vue";
 
+const route = useRoute();
+
 const tabs = [
   { name: "my account", href: "#", current: true },
   { name: "my orders", href: "#", current: false },
@@ -15,7 +17,17 @@ const tabs = [
   { name: "my wishlist", href: "#", current: false },
 ];
 
+// Set active tab based on URL query parameter
 const active = ref("my account");
+
+onMounted(() => {
+  const tab = route.query.tab as string;
+  if (tab && tabs.some(t => t.name === tab)) {
+    active.value = tab;
+  } else if (route.query.wishlist) {
+    active.value = "my wishlist";
+  }
+});
 </script>
 
 <template>
