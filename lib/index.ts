@@ -26,6 +26,14 @@ import pack from "~/assets/slideImages/pack.jpg";
 import woman from "~/assets/slideImages/woman.jpg";
 import youth from "~/assets/slideImages/youth.jpg";
 
+// for blog
+import moistureBlog from "~/assets/blog/moistureBlog.webp";
+import girlPower from "~/assets/blog/girlPower.webp";
+import creamBlog from "~/assets/blog/creamBlog.webp";
+import shadeBlog from "~/assets/blog/shadeBlog.webp";
+import black from "~/assets/blog/black.webp";
+import handBlog from "~/assets/blog/handBlog.webp";
+
 // for products
 import serum from "~/assets/products/serum.jpg";
 import bottle from "~/assets/products/bottle.jpg";
@@ -323,32 +331,38 @@ export {
   pressed,
   tube,
   wash,
+  moistureBlog,
+  girlPower,
+  creamBlog,
+  shadeBlog,
+  black,
+  handBlog,
 };
 
 export const bestSellers = [
   {
-    id: 'pressed-foundation-007',
+    id: "pressed-foundation-007",
     name: "radiant renewal serum",
     price: 49.99,
     image: blue,
     hoverImage: blueHover,
   },
   {
-    id: 'hair-treatment-008',
+    id: "hair-treatment-008",
     name: "Luminous eye cream",
     price: 25.55,
     image: radiant,
     hoverImage: sanitizerHover,
   },
   {
-    id: 'glow-moisturizer-005',
+    id: "glow-moisturizer-005",
     name: "Hydraglow moisturizer",
     price: 19.99,
     image: moisturizer,
     hoverImage: moisturizerHover,
   },
   {
-    id: 'vit-c-serum-001',
+    id: "vit-c-serum-001",
     name: "Radiance cleanser",
     price: 19.99,
     image: sanitizer,
@@ -391,4 +405,102 @@ export const secondItems = [
   { id: 8, image: pack },
   { id: 9, image: youth },
   { id: 10, image: hold },
+];
+
+export const blog = [
+  {
+    id: "blog-001",
+    title: "The Ultimate Guide to Hydration: Why Your Skin Needs Moisture",
+    excerpt:
+      "Discover the science behind skin hydration and learn how to maintain that perfect moisture balance for healthy, glowing skin.",
+    content:
+      "Hydration is the cornerstone of healthy skin. When your skin is properly hydrated, it appears plump, radiant, and resilient. Learn about the different types of moisturizers, how to layer your skincare products effectively, and the best routines for different skin types.",
+    image: moistureBlog,
+    author: "Dr. Sarah Chen",
+    date: "2024-12-15",
+    readTime: "8 min read",
+    category: "Skincare Basics",
+    tags: ["hydration", "moisturizer", "skincare routine", "skin health"],
+    slug: "ultimate-guide-to-skin-hydration",
+  },
+  {
+    id: "blog-002",
+    title: "Empowering Your Beauty: Self-Care Rituals for Modern Women",
+    excerpt:
+      "In today's fast-paced world, self-care isn't just a luxury—it's essential. Discover beauty rituals that nourish both body and soul.",
+    content:
+      "Self-care goes beyond skincare products; it's about creating meaningful rituals that make you feel empowered and beautiful. From mindful application techniques to incorporating aromatherapy into your routine, learn how to transform your daily skincare practice into a moment of self-love and empowerment.",
+    image: girlPower,
+    author: "Emma Rodriguez",
+    date: "2024-12-12",
+    readTime: "6 min read",
+    category: "Wellness & Beauty",
+    tags: ["self-care", "mindfulness", "beauty rituals", "empowerment"],
+    slug: "empowering-beauty-self-care-rituals",
+  },
+  {
+    id: "blog-003",
+    title: "Cream vs. Oil: Decoding Your Skincare Confusion",
+    excerpt:
+      "Not all moisturizers are created equal. Understanding the differences between creams and oils can revolutionize your skincare routine.",
+    content:
+      "The cream vs. oil debate has confused skincare enthusiasts for years. While both serve the important function of locking in moisture, they work differently and serve different purposes. Learn which one is right for your skin type, how to incorporate both into your routine, and when to choose one over the other.",
+    image: creamBlog,
+    author: "Dr. Michael Park",
+    date: "2024-12-10",
+    readTime: "7 min read",
+    category: "Product Guide",
+    tags: ["creams", "oils", "moisturizers", "skincare science"],
+    slug: "cream-vs-oil-skincare-guide",
+  },
+  {
+    id: "blog-004",
+    title: "Summer Skincare: Protecting Your Skin from UV Damage",
+    excerpt:
+      "Summer brings sunshine and fun, but it also brings UV rays that can damage your skin. Learn how to protect and repair your skin this season.",
+    content:
+      "Summer skincare requires a different approach than winter care. The intense UV rays, heat, and humidity can strip your skin of moisture and cause premature aging. Discover the best sunscreens, after-sun treatments, and how to adjust your routine for the warmer months while maintaining healthy, protected skin.",
+    image: shadeBlog,
+    author: "Dr. Lisa Thompson",
+    date: "2024-12-08",
+    readTime: "9 min read",
+    category: "Seasonal Care",
+    tags: ["sun protection", "summer skincare", "UV damage", "sunscreen"],
+    slug: "summer-skincare-uv-protection",
+  },
+  {
+    id: "blog-005",
+    title: "The Art of Hand Care: Beyond Basic Moisturizing",
+    excerpt:
+      "Your hands tell a story about your life and deserve the same care you give your face. Discover comprehensive hand care routines.",
+    content:
+      "Often overlooked in skincare routines, hands are one of the first places to show signs of aging. From environmental exposure to frequent washing, hands need specialized care. Learn about exfoliation techniques, targeted treatments, and protective measures to keep your hands looking youthful and healthy.",
+    image: handBlog,
+    author: "Rachel Kim",
+    date: "2024-12-05",
+    readTime: "5 min read",
+    category: "Body Care",
+    tags: ["hand care", "aging prevention", "exfoliation", "body skincare"],
+    slug: "art-of-hand-care",
+  },
+  {
+    id: "blog-006",
+    title: "Minimalist Skincare: Less is More for Healthy Skin",
+    excerpt:
+      "Sometimes the best skincare routine is the simplest one. Discover how to achieve radiant skin with fewer products.",
+    content:
+      "In a world of endless skincare products and complex routines, sometimes less truly is more. Minimalist skincare focuses on quality over quantity, using targeted products that work synergistically. Learn how to simplify your routine while achieving better results, and discover which products are truly essential for healthy skin.",
+    image: black,
+    author: "Dr. James Wilson",
+    date: "2024-12-03",
+    readTime: "6 min read",
+    category: "Skincare Philosophy",
+    tags: [
+      "minimalist skincare",
+      "simplified routine",
+      "essential products",
+      "skincare philosophy",
+    ],
+    slug: "minimalist-skincare-less-is-more",
+  },
 ];

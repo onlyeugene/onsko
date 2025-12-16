@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useWishlist } from "~/composables/useWishlist";
 import { useCart } from "~/composables/useCart";
+import { products } from "~~/lib";
 
 const { wishlist, removeFromWishlist } = useWishlist();
 const { addToCart } = useCart();
@@ -11,6 +12,12 @@ const handleRemoveFromWishlist = (productId: string) => {
 
 const handleAddToCart = (productId: string) => {
   addToCart(productId, 1);
+};
+
+// Check if item is a best seller
+const isBestSeller = (itemId: string) => {
+  const product = products.find((p) => p.id === itemId);
+  return product?.isBestSeller || false;
 };
 </script>
 
@@ -25,64 +32,76 @@ const handleAddToCart = (productId: string) => {
     <div class="w-full mt-5 border-b-[0.1px] border-gray-400" />
 
     <!-- Wishlist Items -->
-    <div v-if="wishlist.length > 0" class="mt-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="mt-8">
+      <div
+        v-if="wishlist.length > 0"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-6"
+      >
         <div
           v-for="item in wishlist"
           :key="item.id"
-          class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
+          class="overflow-hidden relative group"
         >
           <div class="relative">
             <img
               :src="item.image"
               :alt="item.name"
-              class="w-full h-48 object-cover"
+              class="w-[400px] h-auto object-cover"
             />
+
+            <!-- Best Seller Tag (always visible) -->
+            <div
+              v-if="isBestSeller(item.id)"
+              class="absolute top-0 left-0 bg-[#627023] text-white px-4 py-2 text-xs font-semibold"
+            >
+              Best Seller
+            </div>
+
+            <!-- Remove from Wishlist Button - Visible only on hover -->
             <button
               @click="handleRemoveFromWishlist(item.id)"
-              class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors"
+              class="absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-200"
             >
-              <Icon name="uil:trash" class="w-4 h-4 text-red-500" />
+              <Icon
+                name="uil:times"
+                class="w-7 h-7 cursor-pointer text-white"
+              />
             </button>
           </div>
 
-          <div class="p-4">
-            <h3 class="font-medium text-gray-900 mb-2">{{ item.name }}</h3>
-            <p class="text-gray-600 font-semibold mb-3">${{ item.price }}</p>
+          <!-- Product info always visible below the image -->
+          <div class="mt-4">
+            <h3 class="font-extralight text-gray-900 mb-2">
+              {{ item.name }}
+            </h3>
+            <p class="text-gray-600 font-extralight mb-4">${{ item.price }}</p>
+
             <div class="flex gap-2">
               <button
                 @click="handleAddToCart(item.id)"
-                class="flex-1 bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
+                class="flex-1 bg-[#627023] text-white py-3 px-3 transition-colors text-sm font-medium"
               >
                 Add to Cart
               </button>
-              <NuxtLink
-                :to="`/shop/${item.id}`"
-                class="flex-1 border border-gray-300 py-2 px-4 rounded-md hover:bg-gray-50 transition-colors text-sm font-medium text-center"
-              >
-                View Details
-              </NuxtLink>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Empty Wishlist -->
-    <div v-else class="text-center my-32">
-      <Icon name="uil:heart" class="w-16 h-16 text-gray-300 mx-auto mb-6" />
-      <h2 class="text-xl mb-4 text-gray-600">Your wishlist is empty</h2>
-      <p class="text-gray-500 mb-6">
-        Start adding products you love to your wishlist!
-      </p>
-      <NuxtLink
-        to="/shop"
-        class="inline-block bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors font-medium"
-      >
-        Start Shopping
-      </NuxtLink>
+      <!-- Empty Wishlist -->
+      <div v-else class="text-center my-32">
+        <Icon name="uil:heart" class="w-16 h-16 text-gray-300 mx-auto mb-6" />
+        <h2 class="text-xl mb-4 text-gray-600">Your wishlist is empty</h2>
+        <p class="text-gray-500 mb-6">
+          Start adding products you love to your wishlist!
+        </p>
+        <NuxtLink
+          to="/shop"
+          class="inline-block bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors font-medium"
+        >
+          Start Shopping
+        </NuxtLink>
+      </div>
     </div>
-
-    <div class="w-full mt-5 border-b-[0.1px] border-gray-400" />
   </div>
 </template>

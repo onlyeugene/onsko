@@ -22,7 +22,7 @@ const active = ref("my account");
 
 onMounted(() => {
   const tab = route.query.tab as string;
-  if (tab && tabs.some(t => t.name === tab)) {
+  if (tab && tabs.some((t) => t.name === tab)) {
     active.value = tab;
   } else if (route.query.wishlist) {
     active.value = "my wishlist";
@@ -37,20 +37,22 @@ onMounted(() => {
         <BaseNavigation />
       </div>
 
-      <div class="container">
-        <div class="flex mt-32 border-b">
+      <div class="container w-full">
+        <div class="flex mt-32 border-b overflow-x-scroll scrollbar-hide w-full">
           <div
             v-for="item in tabs"
             :key="item.name"
             @click="active = item.name"
             :class="[
-              'cursor-pointer py-4 px-6 border-b-4 transition-colors hover:border-gray-300 duration-300 delay-75',
+              'cursor-pointer py-4 px-6 border-b-4 transition-colors hover:border-gray-300 duration-300 delay-75 w-full',
               active === item.name
                 ? 'border-primary'
                 : 'border-transparent font-light',
             ]"
           >
-            <p class="cursor-pointer">{{ item.name }}</p>
+            <p class="cursor-pointer md:text-base text-xs whitespace-nowrap">
+              {{ item.name }}
+            </p>
           </div>
         </div>
 
@@ -128,3 +130,14 @@ onMounted(() => {
     <Footer />
   </div>
 </template>
+
+<style scoped>
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  </style>
